@@ -36,20 +36,20 @@ class SimpleRestManager {
         return response
     }
 
-    /*fun retrieveBreweriesByState(state: String): HttpResponse<List<StudentDTO>> {
+    fun retrieveBreweriesByState(state: String): HttpResponse<List<StudentsDTO>> {
         val formattedState = state.replace(" ", "_")
-        val response = httpClient.executeRequest<List<BreweryDTO>>(
+        val response = httpClient.executeRequest<List<StudentsDTO>>(
             HttpRequest(
                 GET,
-                URL("$rootUrl/breweries?by_state=$formattedState")
+                URL("$rootUrl/students?by_state=$formattedState")
             )
         )
         if (response is HttpResponse.Success) {
             val data = dataArrayFromJson(response.body)
             data?.let {
-                response.value = jsonToList(it)?.map { brewery -> BreweryDTO.fromJson(brewery) }
+                response.value = jsonToList(it)?.map { brewery -> StudentsDTO.fromJson(brewery) }
             } ?: Log.w(TAG, "Unable to parse data in json")
         }
         return response
-    }*/
+    }
 }
