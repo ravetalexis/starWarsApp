@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="10dp">
+    <TextView
+            tools:text="Nom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameTv"/>
+    <TextView
+            tools:text="Genre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addressTv"/>
+    <TextView
+            tools:text="House"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/urlTv"/>
+    <TextView
+            tools:text="Year Of Birth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/urlTv"/>
+    <TextView
+            tools:text="Patronus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/urlTv"/>
+</LinearLayout>
