@@ -8,25 +8,25 @@
             tools:text="Nom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nameTv"/>
+            android:id="@+id/nameST"/>
     <TextView
             tools:text="Genre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/addressTv"/>
+            android:id="@+id/genreST"/>
     <TextView
             tools:text="House"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/urlTv"/>
+            android:id="@+id/houseST"/>
     <TextView
             tools:text="Year Of Birth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/urlTv"/>
+            android:id="@+id/YearOfBirthST"/>
     <TextView
             tools:text="Patronus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/urlTv"/>
+            android:id="@+id/patronusST"/>
 </LinearLayout>
