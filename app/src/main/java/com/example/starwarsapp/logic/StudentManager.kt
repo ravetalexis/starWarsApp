@@ -12,8 +12,8 @@ class StudentManager {
         const val TAG = "StudentManager"
     }
 
-    fun retrieveBreweries(): ResultWrapper<List<StudentEntity>> {
-        Log.d(TAG, "Retrieving breweries")
+    fun retrieveStudents(): ResultWrapper<List<StudentEntity>> {
+        Log.d(TAG, "Retrieving students")
         return when (val responseDTO = restManager.retrieveStudents()) {
             is HttpResponse.Success -> ResultWrapper.Success(responseDTO.value?.map { it.toEntity() })
             is HttpResponse.Error -> ResultWrapper.Error(responseDTO.throwable)
@@ -21,8 +21,8 @@ class StudentManager {
     }
 
     fun retrieveStudentsByState(state: String): ResultWrapper<List<StudentEntity>> {
-        Log.d(TAG, "Retrieving breweries by state $state")
-        return when (val responseDTO = restManager.retrieveBreweriesByState(state)) {
+        Log.d(TAG, "Retrieving students by state $state")
+        return when (val responseDTO = restManager.retrieveStudentsByState(state)) {
             is HttpResponse.Success -> ResultWrapper.Success(responseDTO.value?.map { it.toEntity() })
             is HttpResponse.Error -> ResultWrapper.Error(responseDTO.throwable)
         }

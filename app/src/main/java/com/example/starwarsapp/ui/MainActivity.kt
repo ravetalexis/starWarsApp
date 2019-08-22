@@ -50,13 +50,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadData() {
         executeOnBackground {
-            // Retrieve breweries
-            when (val result = studentManager.retrieveBreweries()) {
+            // Retrieve students
+            when (val result = studentManager.retrieveStudents()) {
                 is ResultWrapper.Success -> {
                     executeOnUi {
                         result.data?.let {
                             updateUI(it)
-                        } ?: Log.w(TAG, "Unable to retrieve breweries")
+                        } ?: Log.w(TAG, "Unable to retrieve students")
                     }
                 }
                 is ResultWrapper.Error -> {
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private fun updateUI(breweries: List<StudentEntity>) {
-        studentAdapter.students = breweries
+    private fun updateUI(students: List<StudentEntity>) {
+        studentAdapter.students = students
     }
 }

@@ -58,13 +58,13 @@ class SearchStudentActivity : AppCompatActivity() {
 
     private fun search(state: String) {
         executeOnBackground {
-            // Retrieve breweries
+            // Retrieve students
             when (val result = studentManager.retrieveStudentsByState(state)) {
                 is ResultWrapper.Success -> {
                     executeOnUi {
                         result.data?.let {
                             updateUI(it)
-                        } ?: Log.w(TAG, "Unable to retrieve breweries by state")
+                        } ?: Log.w(TAG, "Unable to retrieve studentss by state")
                     }
                 }
                 is ResultWrapper.Error -> {
@@ -75,7 +75,7 @@ class SearchStudentActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private fun updateUI(breweries: List<StudentEntity>) {
-        studentAdapter.students = breweries
+    private fun updateUI(students: List<StudentEntity>) {
+        studentAdapter.students = students
     }
 }
