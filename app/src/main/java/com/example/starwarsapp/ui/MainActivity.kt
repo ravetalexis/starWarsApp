@@ -14,10 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.starwarsapp.R
 import com.example.starwarsapp.logic.StudentEntity
 import com.example.starwarsapp.logic.StudentManager
+import com.example.starwarsapp.ui.student.SearchStudentActivity
 import com.example.starwarsapp.ui.student.StudentAdapter
 import fr.mhardy.kotlin_network.logic.ResultWrapper
 import fr.mhardy.kotlin_network.utils.executeOnBackground
 import fr.mhardy.kotlin_network.utils.executeOnUi
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 
@@ -46,17 +48,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         loadData()
+
+        fab.setOnClickListener {
+            startActivity(SearchStudentActivity.prepare(this))
+        }
     }
 
     private fun loadData() {
         executeOnBackground {
-            // Retrieve breweries
-            when (val result = studentManager.retrieveBreweries()) {
+            // Retrieve students
+            when (val result = studentManager.retrieveStudents()) {
                 is ResultWrapper.Success -> {
                     executeOnUi {
                         result.data?.let {
                             updateUI(it)
-                        } ?: Log.w(TAG, "Unable to retrieve breweries")
+                        } ?: Log.w(TAG, "Unable to retrieve students")
                     }
                 }
                 is ResultWrapper.Error -> {
@@ -67,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private fun updateUI(breweries: List<StudentEntity>) {
-        studentAdapter.students = breweries
+    private fun updateUI(students: List<StudentEntity>) {
+        studentAdapter.students = students
     }
 }

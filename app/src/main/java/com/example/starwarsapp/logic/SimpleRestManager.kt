@@ -1,4 +1,4 @@
-package fr.mhardy.kotlin_network.logic
+package com.example.starwarsapp.logic
 
 import android.util.Log
 import com.example.starwarsapp.core.rest.dto.StudentsDTO
@@ -30,24 +30,24 @@ class SimpleRestManager {
         if (response is HttpResponse.Success) {
             val data = dataArrayFromJson(response.body)
             data?.let {
-                response.value = jsonToList(it)?.map { brewery -> StudentsDTO.fromJson(brewery) }
+                response.value = jsonToList(it)?.map { student -> StudentsDTO.fromJson(student) }
             } ?: Log.w(TAG, "Unable to parse data in json")
         }
         return response
     }
 
-    fun retrieveBreweriesByState(state: String): HttpResponse<List<StudentsDTO>> {
-        val formattedState = state.replace(" ", "_")
+    fun retrieveStudentsByName(name: String): HttpResponse<List<StudentsDTO>> {
+        val formattedName = name.replace(" ", "_")
         val response = httpClient.executeRequest<List<StudentsDTO>>(
             HttpRequest(
                 GET,
-                URL("$rootUrl/students?by_state=$formattedState")
+                URL("$rootUrl/characters/students?by_name=$formattedName")
             )
         )
         if (response is HttpResponse.Success) {
             val data = dataArrayFromJson(response.body)
             data?.let {
-                response.value = jsonToList(it)?.map { brewery -> StudentsDTO.fromJson(brewery) }
+                response.value = jsonToList(it)?.map { student -> StudentsDTO.fromJson(student) }
             } ?: Log.w(TAG, "Unable to parse data in json")
         }
         return response

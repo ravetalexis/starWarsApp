@@ -20,11 +20,11 @@ data class StudentsDTO(
         fun fromJson(jsonObject: JSONObject): StudentsDTO =
             StudentsDTO(
                 name = jsonObject.getString("name"),
-                gender = jsonObject.getString("brewery_type"),
-                house = jsonObject.getString("street"),
-                yearOfBirth = jsonObject.getString("city"),
-                patronus = jsonObject.getString("state"),
-                image = jsonObject.getString("postal_code")
+                gender = jsonObject.getString("gender"),
+                house = jsonObject.getString("house"),
+                yearOfBirth = jsonObject.getString("yearOfBirth"),
+                patronus = jsonObject.getString("patronus"),
+                image = jsonObject.getString("image")
             )
     }
 

@@ -2,6 +2,7 @@ package fr.mhardy.kotlin_network.core.rest.http
 
 import android.util.Log
 import com.example.starwarsapp.BuildConfig
+import com.example.starwarsapp.core.rest.http.HttpException
 //import fr.mhardy.kotlin_network.BuildConfig
 import java.io.DataOutputStream
 import java.net.HttpURLConnection
