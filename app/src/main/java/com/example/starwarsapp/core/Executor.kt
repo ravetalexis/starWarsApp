@@ -1,4 +1,4 @@
-package fr.mhardy.kotlin_network.core
+package com.example.starwarsapp.core
 
 import android.os.Build
 import java.util.concurrent.ExecutorService

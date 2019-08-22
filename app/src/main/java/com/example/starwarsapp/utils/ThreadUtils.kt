@@ -1,7 +1,7 @@
-package fr.mhardy.kotlin_network.utils
+package com.example.starwarsapp.utils
 
-import fr.mhardy.kotlin_network.core.Executor
-import fr.mhardy.kotlin_network.core.Handler
+import com.example.starwarsapp.core.Executor
+import com.example.starwarsapp.core.Handler
 
 
 internal inline fun executeOnBackground(noinline runnable: () -> Unit) {

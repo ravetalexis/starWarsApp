@@ -1,10 +1,10 @@
 package com.example.starwarsapp.ui.student
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.starwarsapp.R
 import com.example.starwarsapp.logic.StudentEntity
 

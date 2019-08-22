@@ -1,4 +1,4 @@
-package fr.mhardy.kotlin_network.logic
+package com.example.starwarsapp.logic
 
 sealed class ResultWrapper<out T : Any> {
     data class Success<T : Any>(var data: T?) : ResultWrapper<T>()

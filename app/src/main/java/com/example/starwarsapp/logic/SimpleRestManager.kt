@@ -1,4 +1,4 @@
-package fr.mhardy.kotlin_network.logic
+package com.example.starwarsapp.logic
 
 import android.util.Log
 import com.example.starwarsapp.core.rest.dto.StudentsDTO
@@ -6,8 +6,8 @@ import fr.mhardy.kotlin_network.core.rest.http.HttpClient
 import fr.mhardy.kotlin_network.core.rest.http.HttpMethod.GET
 import fr.mhardy.kotlin_network.core.rest.http.HttpRequest
 import fr.mhardy.kotlin_network.core.rest.http.HttpResponse
-import fr.mhardy.kotlin_network.utils.dataArrayFromJson
-import fr.mhardy.kotlin_network.utils.jsonToList
+import com.example.starwarsapp.utils.dataArrayFromJson
+import com.example.starwarsapp.utils.jsonToList
 import java.net.URL
 
 class SimpleRestManager {

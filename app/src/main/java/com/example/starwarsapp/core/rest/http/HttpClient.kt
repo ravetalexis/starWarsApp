@@ -1,7 +1,7 @@
 package fr.mhardy.kotlin_network.core.rest.http
 
 import android.util.Log
-import fr.mhardy.kotlin_network.BuildConfig
+import com.example.starwarsapp.BuildConfig
 import java.io.DataOutputStream
 import java.net.HttpURLConnection
 import java.net.URLConnection

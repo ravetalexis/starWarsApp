@@ -2,8 +2,6 @@ package com.example.starwarsapp.logic
 
 import android.util.Log
 import fr.mhardy.kotlin_network.core.rest.http.HttpResponse
-import fr.mhardy.kotlin_network.logic.ResultWrapper
-import fr.mhardy.kotlin_network.logic.SimpleRestManager
 
 class StudentManager {
     private val restManager by lazy { SimpleRestManager() }

@@ -1,4 +1,4 @@
-package fr.mhardy.kotlin_network.utils
+package com.example.starwarsapp.utils
 
 import org.json.JSONArray
 import org.json.JSONObject
