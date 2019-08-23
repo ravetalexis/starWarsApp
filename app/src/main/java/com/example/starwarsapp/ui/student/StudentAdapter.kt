@@ -15,6 +15,8 @@ import android.graphics.BitmapFactory
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.ParcelFileDescriptor
+import com.example.starwarsapp.core.extension.age
+import com.example.starwarsapp.core.extension.age2
 import com.squareup.picasso.Picasso
 import java.io.IOException
 
@@ -52,7 +54,7 @@ class StudentAdapter(val context: Context) : RecyclerView.Adapter<StudentAdapter
             nameST.text = item.name
             genreST.text = item.gender
             houseST.text = item.house
-            YearOfBirthST.text = item.yearOfBirth
+            YearOfBirthST.text = item.yearOfBirth.age2().toString()
             patronusST.text = item.patronus
             //imageST.setImageURI(item.image)
             //imageST.setImageBitmap(getBitmapFromUri(item.image, context))
