@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:inputType="textPersonName"
-            android:hint="Recherche d'un personnage"
+            android:hint="@string/searchStudent"
             android:ems="10"
             android:imeOptions="actionDone"
             android:id="@+id/searchField"/>

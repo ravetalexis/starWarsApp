@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Harry Potter API</string>
+    <string name="searchStudent">Recherche d\'un personnage</string>
     <string name="this_is_imageview">imageview student</string>
 </resources>

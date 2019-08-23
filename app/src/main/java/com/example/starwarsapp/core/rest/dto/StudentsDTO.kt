@@ -3,6 +3,7 @@ package com.example.starwarsapp.core.rest.dto
 import android.net.Uri
 import com.example.starwarsapp.logic.StudentEntity
 import org.json.JSONObject
+import java.time.LocalDateTime
 import java.util.ArrayList
 
 data class StudentsDTO(

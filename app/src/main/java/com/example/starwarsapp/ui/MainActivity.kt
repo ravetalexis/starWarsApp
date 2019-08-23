@@ -1,12 +1,16 @@
 package com.example.starwarsapp.ui
 
+import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.starwarsapp.R
 import com.example.starwarsapp.logic.StudentEntity
 import com.example.starwarsapp.logic.StudentManager
@@ -18,12 +22,15 @@ import fr.mhardy.kotlin_network.utils.executeOnUi
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.student_item.*
+import kotlin.random.Random
 
 
 class MainActivity : AppCompatActivity() {
 
     private val studentManager by lazy { StudentManager() }
     private val studentAdapter = StudentAdapter(this)
+
+    //var swipeLayout: SwipeRefreshLayout? = null
 
     companion object {
         private val TAG = MainActivity::class.java.simpleName
@@ -32,12 +39,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        this.setSupportActionBar(toolbar)
-
-        //val imageView = findViewById<ImageView>(R.id.imageView)
-        //val imgResId = R.drawable.ic_launcher_background
-        //var resId = imgResId
-        //imageView.setImageResource(imgResId)
+        setSupportActionBar(toolbar)
 
         val layoutManagerStudents = LinearLayoutManager(this)
         studentsRv.apply {
@@ -50,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         loadData()
 
+        val foo = Integer.parseInt("1832")
         fab.setOnClickListener {
             startActivity(SearchStudentActivity.prepare(this))
         }
@@ -77,4 +80,5 @@ class MainActivity : AppCompatActivity() {
     private fun updateUI(students: List<StudentEntity>) {
         studentAdapter.students = students
     }
+
 }
