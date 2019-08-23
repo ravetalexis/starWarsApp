@@ -30,9 +30,8 @@ class SearchStudentActivity : AppCompatActivity() {
     }
 
     private val studentManager by lazy { StudentManager() }
-    private val studentAdapter = StudentAdapter()
+    private val studentAdapter = StudentAdapter(this)
     private var listStudent = listOf<StudentEntity>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +69,6 @@ class SearchStudentActivity : AppCompatActivity() {
                 is ResultWrapper.Success -> {
                     executeOnUi {
                         result.data?.let {
-
                             listStudent = it
                             updateUI(it)
                         } ?: Log.w(TAG, "Unable to retrieve students by name")
@@ -84,11 +82,10 @@ class SearchStudentActivity : AppCompatActivity() {
     }
 
     private  fun searchName(name: String) {
-        //filtrage
         val newListSearch = listStudent.filter { it.name.contains(name, true)
         }
-        updateUI(newListSearch)
-    }
+    updateUI(newListSearch)
+}
 
     @MainThread
     private fun updateUI(listStudent: List<StudentEntity>) {

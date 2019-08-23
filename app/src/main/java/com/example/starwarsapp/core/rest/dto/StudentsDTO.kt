@@ -1,6 +1,9 @@
 package com.example.starwarsapp.core.rest.dto
 
 import android.net.Uri
+import android.os.Build
+import androidx.annotation.RequiresApi
+import com.example.starwarsapp.core.extension.age
 import com.example.starwarsapp.logic.StudentEntity
 import org.json.JSONObject
 import java.util.ArrayList
@@ -15,7 +18,7 @@ data class StudentsDTO(
 ) {
     companion object {
         /**
-         * Returns an BreweryDTO from a [JSONObject].
+         * Returns an StudentsDTO from a [JSONObject].
          */
         fun fromJson(jsonObject: JSONObject): StudentsDTO =
             StudentsDTO(
@@ -31,14 +34,15 @@ data class StudentsDTO(
     /**
      * Transforms a DTO into an [StudentEntity].
      */
+    @RequiresApi(Build.VERSION_CODES.O)
     fun toEntity(): StudentEntity {
         return StudentEntity(
             name,
             gender,
             house,
-            yearOfBirth,
+            yearOfBirth.age(),
             patronus,
-            image
+            Uri.parse(image)
         )
     }
 

@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">StarWarsApp</string>
+    <string name="app_name">Harry Potter API</string>
+    <string name="this_is_imageview">imageview student</string>
 </resources>

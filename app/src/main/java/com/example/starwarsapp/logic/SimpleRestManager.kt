@@ -36,6 +36,7 @@ class SimpleRestManager {
         return response
     }
 
+
     fun retrieveStudentsByName(name: String): HttpResponse<List<StudentsDTO>> {
         val formattedName = name.replace(" ", "_")
         val response = httpClient.executeRequest<List<StudentsDTO>>(
