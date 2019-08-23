@@ -27,7 +27,7 @@ class SearchStudentActivity : AppCompatActivity() {
     }
 
     private val studentManager by lazy { StudentManager() }
-    private val studentAdapter = StudentAdapter()
+    private val studentAdapter = StudentAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

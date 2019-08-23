@@ -9,7 +9,7 @@ data class StudentEntity(
     val house: String,
     val yearOfBirth: String,
     val patronus: String,
-    val image: String
+    val image: Uri
 ) {
 
 }

@@ -1,16 +1,25 @@
 package com.example.starwarsapp.ui.student
 
 
-//import android.support.v7.widget.RecyclerView
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.starwarsapp.R
 import com.example.starwarsapp.logic.StudentEntity
+import kotlinx.android.synthetic.main.student_item.view.*
+import android.graphics.BitmapFactory
+import android.graphics.Bitmap
+import android.net.Uri
+import android.os.ParcelFileDescriptor
+import com.squareup.picasso.Picasso
+import java.io.IOException
 
-class StudentAdapter : RecyclerView.Adapter<StudentAdapter.MyViewHolder>(){
+
+class StudentAdapter(val context: Context) : RecyclerView.Adapter<StudentAdapter.MyViewHolder>(){
 
     var onStudentClickListener: OnStudentClickListener? = null
 
@@ -36,6 +45,8 @@ class StudentAdapter : RecyclerView.Adapter<StudentAdapter.MyViewHolder>(){
         private val houseST: TextView = view.findViewById(R.id.houseST)
         private val YearOfBirthST: TextView = view.findViewById(R.id.YearOfBirthST)
         private val patronusST: TextView = view.findViewById(R.id.patronusST)
+        //val imgResId = R.drawable.ic_launcher_background
+        private val imageST: ImageView = view.findViewById(R.id.imageView)
 
         fun bind(item: StudentEntity) {
             nameST.text = item.name
@@ -43,6 +54,9 @@ class StudentAdapter : RecyclerView.Adapter<StudentAdapter.MyViewHolder>(){
             houseST.text = item.house
             YearOfBirthST.text = item.yearOfBirth
             patronusST.text = item.patronus
+            //imageST.setImageURI(item.image)
+            //imageST.setImageBitmap(getBitmapFromUri(item.image, context))
+            Picasso.get().load(item.image).into(imageST)
 
             view.setOnClickListener { onStudentClickListener?.onStudentClicked(item) }
             view.setOnLongClickListener {
@@ -55,6 +69,15 @@ class StudentAdapter : RecyclerView.Adapter<StudentAdapter.MyViewHolder>(){
     interface OnStudentClickListener {
         fun onStudentClicked(student: StudentEntity)
         fun onStudentLongClicked(student: StudentEntity)
+    }
+
+    @Throws(IOException::class)
+    private fun getBitmapFromUri(uri: Uri, context: Context): Bitmap {
+        val parcelFileDescriptor = context.getContentResolver().openFileDescriptor(uri, "r")
+        val fileDescriptor = parcelFileDescriptor.getFileDescriptor()
+        val image = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+        parcelFileDescriptor.close()
+        return image
     }
 
 }

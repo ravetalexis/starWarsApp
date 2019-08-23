@@ -38,7 +38,7 @@ data class StudentsDTO(
             house,
             yearOfBirth,
             patronus,
-            image
+            Uri.parse(image)
         )
     }
 

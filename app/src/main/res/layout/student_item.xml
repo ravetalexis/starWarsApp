@@ -4,6 +4,11 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:padding="10dp">
+    <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:contentDescription="@string/this_is_imageview"/>
     <TextView
             tools:text="Nom"
             android:layout_width="match_parent"
