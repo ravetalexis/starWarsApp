@@ -17,8 +17,11 @@ import fr.mhardy.kotlin_network.logic.ResultWrapper
 import fr.mhardy.kotlin_network.utils.executeOnBackground
 import fr.mhardy.kotlin_network.utils.executeOnUi
 import kotlinx.android.synthetic.main.activity_search_student.*
+import kotlinx.android.synthetic.main.student_item.*
 
 class SearchStudentActivity : AppCompatActivity() {
+
+
 
     companion object {
         private val TAG = SearchStudentActivity::class.java.simpleName
@@ -28,6 +31,8 @@ class SearchStudentActivity : AppCompatActivity() {
 
     private val studentManager by lazy { StudentManager() }
     private val studentAdapter = StudentAdapter()
+    private var listStudent = listOf<StudentEntity>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +48,14 @@ class SearchStudentActivity : AppCompatActivity() {
             )
         }
 
+        search()
+
         searchField.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val imm = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(v.windowToken, 0)
 
-                search(searchField.text.toString())
+                searchName(searchField.text.toString())
 
                 true
             }
@@ -56,14 +63,16 @@ class SearchStudentActivity : AppCompatActivity() {
         }
     }
 
-    private fun search(name: String) {
+    private fun search() {
         executeOnBackground {
             // Retrieve students
-            when (val result = studentManager.retrieveStudentsByName(name)) {
+            when (val result = studentManager.retrieveStudents()) {
                 is ResultWrapper.Success -> {
                     executeOnUi {
                         result.data?.let {
-                            updateUI(it)
+
+                            listStudent = it
+                           // updateUI(it)
                         } ?: Log.w(TAG, "Unable to retrieve students by name")
                     }
                 }
@@ -74,8 +83,17 @@ class SearchStudentActivity : AppCompatActivity() {
         }
     }
 
+    private  fun searchName(house: String) {
+        //filtrage
+        val newListSearch = listStudent.filter {
+            house == it.house
+        }
+        updateUI(newListSearch)
+    }
+
     @MainThread
-    private fun updateUI(students: List<StudentEntity>) {
-        studentAdapter.students = students
+    private fun updateUI(listStudent: List<StudentEntity>) {
+        studentAdapter.students = listStudent
+
     }
 }
