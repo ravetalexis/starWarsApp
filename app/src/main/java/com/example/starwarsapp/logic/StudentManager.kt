@@ -3,7 +3,6 @@ package com.example.starwarsapp.logic
 import android.util.Log
 import fr.mhardy.kotlin_network.core.rest.http.HttpResponse
 import fr.mhardy.kotlin_network.logic.ResultWrapper
-import fr.mhardy.kotlin_network.logic.SimpleRestManager
 
 class StudentManager {
     private val restManager by lazy { SimpleRestManager() }
@@ -20,11 +19,12 @@ class StudentManager {
         }
     }
 
-    fun retrieveStudentsByState(state: String): ResultWrapper<List<StudentEntity>> {
-        Log.d(TAG, "Retrieving students by state $state")
-        return when (val responseDTO = restManager.retrieveStudentsByState(state)) {
+    fun retrieveStudentsByName(name: String): ResultWrapper<List<StudentEntity>> {
+        Log.d(TAG, "Retrieving students by state $name")
+        return when (val responseDTO = restManager.retrieveStudentsByName(name)) {
             is HttpResponse.Success -> ResultWrapper.Success(responseDTO.value?.map { it.toEntity() })
             is HttpResponse.Error -> ResultWrapper.Error(responseDTO.throwable)
         }
     }
+
 }

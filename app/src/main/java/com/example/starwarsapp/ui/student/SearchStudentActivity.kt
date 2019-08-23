@@ -17,8 +17,11 @@ import fr.mhardy.kotlin_network.logic.ResultWrapper
 import fr.mhardy.kotlin_network.utils.executeOnBackground
 import fr.mhardy.kotlin_network.utils.executeOnUi
 import kotlinx.android.synthetic.main.activity_search_student.*
+import kotlinx.android.synthetic.main.student_item.*
 
 class SearchStudentActivity : AppCompatActivity() {
+
+
 
     companion object {
         private val TAG = SearchStudentActivity::class.java.simpleName
@@ -28,6 +31,7 @@ class SearchStudentActivity : AppCompatActivity() {
 
     private val studentManager by lazy { StudentManager() }
     private val studentAdapter = StudentAdapter(this)
+    private var listStudent = listOf<StudentEntity>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +47,14 @@ class SearchStudentActivity : AppCompatActivity() {
             )
         }
 
+        search()
+
         searchField.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val imm = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(v.windowToken, 0)
 
-                search(searchField.text.toString())
+                searchName(searchField.text.toString())
 
                 true
             }
@@ -56,15 +62,16 @@ class SearchStudentActivity : AppCompatActivity() {
         }
     }
 
-    private fun search(state: String) {
+    private fun search() {
         executeOnBackground {
             // Retrieve students
-            when (val result = studentManager.retrieveStudentsByState(state)) {
+            when (val result = studentManager.retrieveStudents()) {
                 is ResultWrapper.Success -> {
                     executeOnUi {
                         result.data?.let {
+                            listStudent = it
                             updateUI(it)
-                        } ?: Log.w(TAG, "Unable to retrieve studentss by state")
+                        } ?: Log.w(TAG, "Unable to retrieve students by name")
                     }
                 }
                 is ResultWrapper.Error -> {
@@ -74,8 +81,15 @@ class SearchStudentActivity : AppCompatActivity() {
         }
     }
 
+    private  fun searchName(name: String) {
+        //
+        val name = name.toLowerCase()
+        val newListSearch = listStudent.filter {it.name.contains(name, true)}
+        updateUI(newListSearch)
+    }
+
     @MainThread
-    private fun updateUI(students: List<StudentEntity>) {
-        studentAdapter.students = students
+    private fun updateUI(listStudent: List<StudentEntity>) {
+        studentAdapter.students = listStudent
     }
 }

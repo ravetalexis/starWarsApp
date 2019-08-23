@@ -1,4 +1,4 @@
-package fr.mhardy.kotlin_network.logic
+package com.example.starwarsapp.logic
 
 import android.util.Log
 import com.example.starwarsapp.core.rest.dto.StudentsDTO
@@ -36,12 +36,13 @@ class SimpleRestManager {
         return response
     }
 
-    fun retrieveStudentsByState(state: String): HttpResponse<List<StudentsDTO>> {
-        val formattedState = state.replace(" ", "_")
+
+    fun retrieveStudentsByName(name: String): HttpResponse<List<StudentsDTO>> {
+        val formattedName = name.replace(" ", "_")
         val response = httpClient.executeRequest<List<StudentsDTO>>(
             HttpRequest(
                 GET,
-                URL("$rootUrl/characters/house?house=$formattedState")
+                URL("$rootUrl/characters/students?by_name=$formattedName")
             )
         )
         if (response is HttpResponse.Success) {

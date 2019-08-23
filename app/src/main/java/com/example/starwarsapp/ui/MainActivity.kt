@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.starwarsapp.R
 import com.example.starwarsapp.logic.StudentEntity
 import com.example.starwarsapp.logic.StudentManager
+import com.example.starwarsapp.ui.student.SearchStudentActivity
 import com.example.starwarsapp.ui.student.StudentAdapter
 import fr.mhardy.kotlin_network.logic.ResultWrapper
 import fr.mhardy.kotlin_network.utils.executeOnBackground
@@ -48,6 +49,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         loadData()
+
+        fab.setOnClickListener {
+            startActivity(SearchStudentActivity.prepare(this))
+        }
     }
 
     private fun loadData() {
@@ -58,7 +63,6 @@ class MainActivity : AppCompatActivity() {
                     executeOnUi {
                         result.data?.let {
                             updateUI(it)
-
                         } ?: Log.w(TAG, "Unable to retrieve students")
                     }
                 }
@@ -72,9 +76,5 @@ class MainActivity : AppCompatActivity() {
     @MainThread
     private fun updateUI(students: List<StudentEntity>) {
         studentAdapter.students = students
-    }
-
-    private fun imageViewStudent(students: List<StudentEntity>) {
-
     }
 }
