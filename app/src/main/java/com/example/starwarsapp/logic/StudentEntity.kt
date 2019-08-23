@@ -8,6 +8,7 @@ data class StudentEntity(
     val gender: String,
     val house: String,
     val yearOfBirth: String,
+    //val yearOfBirth: Int?,
     val patronus: String,
     val image: Uri
 ) {

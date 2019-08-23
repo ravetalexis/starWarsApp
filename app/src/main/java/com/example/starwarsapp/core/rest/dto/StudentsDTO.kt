@@ -1,6 +1,9 @@
 package com.example.starwarsapp.core.rest.dto
 
 import android.net.Uri
+import android.os.Build
+import androidx.annotation.RequiresApi
+import com.example.starwarsapp.core.extension.age
 import com.example.starwarsapp.logic.StudentEntity
 import org.json.JSONObject
 import java.time.LocalDateTime
@@ -32,6 +35,7 @@ data class StudentsDTO(
     /**
      * Transforms a DTO into an [StudentEntity].
      */
+    @RequiresApi(Build.VERSION_CODES.O)
     fun toEntity(): StudentEntity {
         return StudentEntity(
             name,
