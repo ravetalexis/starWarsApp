@@ -82,8 +82,6 @@ class SearchStudentActivity : AppCompatActivity() {
     }
 
     private  fun searchName(name: String) {
-        //
-        val name = name.toLowerCase()
         val newListSearch = listStudent.filter {it.name.contains(name, true)}
         updateUI(newListSearch)
     }

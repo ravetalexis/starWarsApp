@@ -1,37 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:padding="10dp">
-    <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:contentDescription="@string/this_is_imageview"/>
-    <TextView
-            tools:text="Nom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/nameST"/>
-    <TextView
-            tools:text="Genre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/genreST"/>
-    <TextView
-            tools:text="House"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/houseST"/>
-    <TextView
-            tools:text="Year Of Birth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/YearOfBirthST"/>
-    <TextView
-            tools:text="Patronus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/patronusST"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="395dp"
+            android:layout_height="177dp" tools:layout_editor_absoluteY="10dp" tools:layout_editor_absoluteX="10dp">
+
+        <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="132dp"
+                android:layout_height="152dp"
+                android:contentDescription="@string/this_is_imageview" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/genreST"
+                android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+                app:layout_constraintVertical_bias="0.739" android:layout_marginTop="2dp"/>
+        <TextView
+                tools:text="Nom"
+                android:layout_width="200dp"
+                android:layout_height="21dp"
+                android:id="@+id/nameST"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="10dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="36dp" android:layout_marginRight="36dp"
+                app:layout_constraintStart_toEndOf="@+id/imageView" android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/genreST" app:layout_constraintHorizontal_bias="1.0"
+        />
+        <TextView
+                tools:text="Genre"
+                android:layout_width="200dp"
+                android:layout_height="21dp"
+                android:id="@+id/genreST" android:layout_marginTop="2dp"
+                app:layout_constraintTop_toBottomOf="@+id/nameST" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="35dp" android:layout_marginRight="35dp"
+                app:layout_constraintBottom_toTopOf="@+id/houseST"/>
+        <TextView
+                tools:text="House"
+                android:layout_width="200dp"
+                android:layout_height="21dp"
+                android:id="@+id/houseST" android:layout_marginTop="2dp"
+                app:layout_constraintTop_toBottomOf="@+id/genreST" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="35dp" android:layout_marginRight="35dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="110dp"
+                android:layout_marginStart="110dp"
+                app:layout_constraintBottom_toTopOf="@+id/YearOfBirthST" app:layout_constraintHorizontal_bias="1.0"/>
+        <TextView
+                tools:text="Year Of Birth"
+                android:layout_width="200dp"
+                android:layout_height="21dp"
+                android:id="@+id/YearOfBirthST"
+                android:layout_marginTop="2dp"
+                app:layout_constraintTop_toBottomOf="@+id/houseST" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="35dp" android:layout_marginRight="35dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="110dp"
+                android:layout_marginStart="110dp"
+                app:layout_constraintBottom_toTopOf="@+id/patronusST" app:layout_constraintHorizontal_bias="1.0"/>
+        <TextView
+                tools:text="Patronus"
+                android:layout_width="200dp"
+                android:layout_height="21dp"
+                android:id="@+id/patronusST"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="110dp"
+                android:layout_marginStart="110dp" app:layout_constraintTop_toBottomOf="@+id/YearOfBirthST"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="35dp"
+                android:layout_marginRight="35dp"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="2dp"
+                app:layout_constraintHorizontal_bias="0.96"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
