@@ -72,7 +72,7 @@ class SearchStudentActivity : AppCompatActivity() {
                         result.data?.let {
 
                             listStudent = it
-                           // updateUI(it)
+                            updateUI(it)
                         } ?: Log.w(TAG, "Unable to retrieve students by name")
                     }
                 }
@@ -83,10 +83,9 @@ class SearchStudentActivity : AppCompatActivity() {
         }
     }
 
-    private  fun searchName(house: String) {
+    private  fun searchName(name: String) {
         //filtrage
-        val newListSearch = listStudent.filter {
-            house == it.house
+        val newListSearch = listStudent.filter { it.name.contains(name, true)
         }
         updateUI(newListSearch)
     }
@@ -94,6 +93,5 @@ class SearchStudentActivity : AppCompatActivity() {
     @MainThread
     private fun updateUI(listStudent: List<StudentEntity>) {
         studentAdapter.students = listStudent
-
     }
 }
