@@ -1,5 +1,6 @@
 package com.example.starwarsapp.core.rest.dto
 
+import android.annotation.TargetApi
 import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -34,13 +35,13 @@ data class StudentsDTO(
     /**
      * Transforms a DTO into an [StudentEntity].
      */
-    @RequiresApi(Build.VERSION_CODES.O)
+
     fun toEntity(): StudentEntity {
         return StudentEntity(
             name,
             gender,
             house,
-            yearOfBirth.age(),
+            yearOfBirth,
             patronus,
             Uri.parse(image)
         )

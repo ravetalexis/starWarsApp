@@ -6,12 +6,12 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
 
-@RequiresApi(Build.VERSION_CODES.O)
+
 fun String.age(): String {
 
         String.let {
 
-        val dateCourant = LocalDate.now()
+        val dateCourant = Date()
         val anneeCourant =  dateCourant.year
         val age = (anneeCourant - Integer.parseInt(this))
         val ageString = age.toString()
